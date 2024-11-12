@@ -10,7 +10,9 @@ class AdminSiteTests(TestCase):
         self.client = Client()
         self.admin_user: User = get_user_model().objects.create_superuser(email="admin@example.com", password="test123")
         self.client.force_login(self.admin_user)
-        self.user: User = get_user_model().objects.create_user(email="user@example.com", password="test123", name="TestUser")
+        self.user: User = get_user_model().objects.create_user(
+            email="user@example.com", password="test123", name="TestUser"
+        )
 
     def test_users_listed(self):
         url = reverse("admin:core_user_changelist")
